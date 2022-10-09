@@ -49,7 +49,7 @@ def get_code_from_image(file_name):
 def main():
     user_name_info = get_random_user()
     user_email = user_name_info + "@163.com"
-    file_name = "/Users/air/PycharmProjects/seleniumPython/Image/test_pic.png"
+    file_name = "/Users/air/PycharmProjects/Web_register_test/Image/test_pic.png"
 
     driver_initial()
     get_element("register_email").send_keys(user_email)

@@ -62,7 +62,7 @@ class RegisterFunction(object):
     def main(self):
         user_name_info = self.get_random_user()
         user_email = user_name_info + "@outlook.com"
-        file_name = "/Users/air/PycharmProjects/seleniumPython/Image/test_pic.png"
+        file_name = "/Users/air/PycharmProjects/Web_register_test/Image/test_pic.png"
         code_text = self.get_code_from_image(file_name)
         self.send_user_info("user_email", user_email)
         self.send_user_info("user_name", user_name_info)
@@ -74,7 +74,7 @@ class RegisterFunction(object):
         if code_error == None:
             print("Successfully register")
         else:
-            self.driver.save_screenshot("/Users/air/PycharmProjects/seleniumPython/Image/test_code_error.png")
+            self.driver.save_screenshot("/Users/air/PycharmProjects/Web_register_test/Image/test_code_error.png")
 
 
 if __name__ == '__main__':

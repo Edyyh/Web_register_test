@@ -6,7 +6,7 @@ class ReadIni(object):
 
     def __init__(self, file_name=None, node=None):
         if file_name == None:
-            file_name = "/Users/air/PycharmProjects/seleniumPython/config/LocalElement.ini"
+            file_name = "/Users/air/PycharmProjects/Web_register_test/config/LocalElement.ini"
         if node == None:
             self.node = "RegisterElement"
         else:
