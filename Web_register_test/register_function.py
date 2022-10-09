@@ -26,7 +26,7 @@ class RegisterFunction(object):
         return driver
 
     # 输入用户信息
-    def send_user_info(self, key, data):
+    def input_user_info(self, key, data):
         self.get_user_element(key).send_keys(data)
 
     # 定位用户信息
@@ -64,10 +64,10 @@ class RegisterFunction(object):
         user_email = user_name_info + "@outlook.com"
         file_name = "/Users/air/PycharmProjects/Web_register_test/Image/test_pic.png"
         code_text = self.get_code_from_image(file_name)
-        self.send_user_info("user_email", user_email)
-        self.send_user_info("user_name", user_name_info)
-        self.send_user_info("password", "111111")
-        self.send_user_info("code_text", code_text)
+        self.input_user_info("user_email", user_email)
+        self.input_user_info("user_name", user_name_info)
+        self.input_user_info("password", "111111")
+        self.input_user_info("code_text", code_text)
         self.get_user_element("register_button").click()
         code_error = self.get_user_element("code_text_error_msg")
 
