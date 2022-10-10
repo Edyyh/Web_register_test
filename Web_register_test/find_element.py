@@ -25,4 +25,5 @@ class FindElement(object):
             else:
                 return self.driver.find_element(by=By.XPATH, value=value)
         except:
+            # self.driver.save_screenshot('Users/air/PycharmProjects/Web_register_test/Image/%s.png' % value)
             return None

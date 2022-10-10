@@ -13,7 +13,7 @@ class RegisterHandle(object):
 
     # 输入用户名
     def input_user_name(self, username):
-        self.register_page.get_email_element().send_keys(username)
+        self.register_page.get_username_element().send_keys(username)
 
     # 输入密码
     def input_user_password(self, password):
@@ -28,16 +28,19 @@ class RegisterHandle(object):
         self.register_page.get_register_button_element().click()
 
     def get_register_error_msg(self, msg, msg_text):
-        if msg == 'user_email_error_msg':
-            text = self.register_page.get_email_error_msg_element().get_attribute('value')
-        elif msg == 'user_username_error_msg':
-            text = self.register_page.get_username_error_msg_element().get_attribute('value')
-        elif msg == 'user_password_error_msg':
-            text = self.register_page.get_password_error_msg_element().get_attribute('value')
-        elif msg == 'code_text_error_msg':
-            text = self.register_page.get_code_error_msg_element().get_attribute('value')
-        else:
+        try:
+            if msg == 'user_email_error_msg':
+                text = self.register_page.get_email_error_msg_element().text
+            elif msg == 'user_username_error_msg':
+                text = self.register_page.get_username_error_msg_element().text
+            elif msg == 'user_password_error_msg':
+                text = self.register_page.get_password_error_msg_element().text
+            else:
+                text = self.register_page.get_code_error_msg_element().text
+        except:
             text = None
+
+        print(text)
         return text
 
     # 获取注册按钮文字
