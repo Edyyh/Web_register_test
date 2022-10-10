@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>Test Cases Report</h1>
-<p class='attribute'><strong>Start Time:</strong> 2022-10-10 23:08:34</p>
-<p class='attribute'><strong>Duration:</strong> 0:01:24.808446</p>
-<p class='attribute'><strong>Status:</strong> Pass 2 Failure 3</p>
+<p class='attribute'><strong>Start Time:</strong> 2022-10-11 01:15:12</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:29.458768</p>
+<p class='attribute'><strong>Status:</strong> Pass 1 Failure 3 Error 1</p>
 
 <p class='description'>第一次测试报告</p>
 </div>
@@ -221,12 +221,12 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='failClass'>
+<tr class='errorClass'>
     <td>Case1</td>
     <td>5</td>
-    <td>2</td>
+    <td>1</td>
     <td>3</td>
-    <td>0</td>
+    <td>1</td>
     <td><a href="javascript:showClassDetail('c1',5)">Detail</a></td>
 </tr>
 
@@ -246,11 +246,11 @@ function showOutput(id, name) {
         <pre>
         
 ft1.1: Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 32, in test_register_email_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 36, in test_register_email_error
     self.assertFalse(email_error, 'case ran')
 AssertionError: True is not false : case ran
 Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 32, in test_register_email_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 36, in test_register_email_error
     self.assertFalse(email_error, 'case ran')
 AssertionError: True is not false : case ran
 
@@ -278,11 +278,11 @@ AssertionError: True is not false : case ran
         <pre>
         
 ft1.2: Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 38, in test_register_username_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 43, in test_register_username_error
     self.assertFalse(username_error)
 AssertionError: True is not false
 Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 38, in test_register_username_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 43, in test_register_username_error
     self.assertFalse(username_error)
 AssertionError: True is not false
 
@@ -310,11 +310,11 @@ AssertionError: True is not false
         <pre>
         
 ft1.3: Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 42, in test_register_password_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 48, in test_register_password_error
     self.assertFalse(password_error)
 AssertionError: True is not false
 Traceback (most recent call last):
-  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 42, in test_register_password_error
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 48, in test_register_password_error
     self.assertFalse(password_error)
 AssertionError: True is not false
 
@@ -350,22 +350,38 @@ pt1.4:
     </td>
 </tr>
 
-<tr id='pt1.5' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_register_pass</div></td>
+<tr id='ft1.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_register_pass</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" οnfοcus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
-        pass</a>
+    <a class="popup_link" οnfοcus='this.blur();' href="javascript:showTestDetail('div_ft1.5')" >
+        error</a>
 
-    <div id='div_pt1.5' class="popup_window">
+    <div id='div_ft1.5' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a οnfοcus='this.blur();' οnclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+        <a οnfοcus='this.blur();' οnclick="document.getElementById('div_ft1.5').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.5: 
+ft1.5: Traceback (most recent call last):
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 55, in test_register_pass
+    result = self.test_register.register_success("55555555555@160.com", "55555555", "123456", self.image_path)
+  File "/Users/air/PycharmProjects/Web_register_test/register/register_business.py", line 19, in register_success
+    if self.register_handle.get_register_button_text() == None:
+  File "/Users/air/PycharmProjects/Web_register_test/register/register_handle.py", line 52, in get_register_button_text
+    return self.register_page.get_register_button_element().text
+AttributeError: 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "/Users/air/PycharmProjects/Web_register_test/test_cases/case1.py", line 55, in test_register_pass
+    result = self.test_register.register_success("55555555555@160.com", "55555555", "123456", self.image_path)
+  File "/Users/air/PycharmProjects/Web_register_test/register/register_business.py", line 19, in register_success
+    if self.register_handle.get_register_button_text() == None:
+  File "/Users/air/PycharmProjects/Web_register_test/register/register_handle.py", line 52, in get_register_button_text
+    return self.register_page.get_register_button_element().text
+AttributeError: 'NoneType' object has no attribute 'text'
+
 
         </pre>
     </div>
@@ -377,9 +393,9 @@ pt1.5:
 <tr id='total_row'>
     <td>Total</td>
     <td>5</td>
-    <td>2</td>
+    <td>1</td>
     <td>3</td>
-    <td>0</td>
+    <td>1</td>
     <td> </td>
 </tr>
 </table>

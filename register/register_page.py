@@ -1,5 +1,4 @@
 # coding = utf-8
-from selenium.webdriver.common.by import By
 from register.find_element import FindElement
 
 
@@ -32,8 +31,12 @@ class RegisterPage(object):
     def get_password_error_msg_element(self):
         return self.fd.get_element("user_password_error_msg")
 
+    # 定位到验证码图片
+    def get_code_image_element(self):
+        return self.fd.get_element("code_image")
+
     # 定位到验证码输入框
-    def get_code_element(self):
+    def get_code_text_element(self):
         return self.fd.get_element("code_text")
 
     # 定位到验证码错误信息

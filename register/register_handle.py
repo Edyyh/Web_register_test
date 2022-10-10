@@ -1,11 +1,13 @@
 # coding = utf-8
 from register.register_page import RegisterPage
+from util.get_code import GetCode
 
 
 # 通过register_page定位到元素位置，再进行内容输入
 class RegisterHandle(object):
     def __init__(self, driver):
-        self.register_page = RegisterPage(driver)
+        self.driver = driver
+        self.register_page = RegisterPage(self.driver)
 
     # 输入邮箱
     def input_user_email(self, email):
@@ -20,8 +22,10 @@ class RegisterHandle(object):
         self.register_page.get_password_element().send_keys(password)
 
     # 输入验证码
-    def input_user_code(self, code):
-        self.register_page.get_code_element().send_keys(code)
+    def input_user_code(self, image_path):
+        get_code_text = GetCode(self.driver)
+        code = get_code_text.get_code_from_image(image_path)
+        self.register_page.get_code_text_element().send_keys(code)
 
     # 点击注册按钮
     def click_register_button(self):

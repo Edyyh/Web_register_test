@@ -1,6 +1,7 @@
 # coding = utf-8
 from register.register_business import RegisterBusiness
 from selenium import webdriver
+# from log.user_log import UserLog
 import unittest
 import os
 import time
@@ -8,6 +9,9 @@ import HTMLTestRunner
 
 
 class Case1(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.image_path = '/Users/air/PycharmProjects/Web_register_test/Image/test_pic.png'
 
     def setUp(self):
         self.driver = webdriver.Chrome()
@@ -28,26 +32,28 @@ class Case1(unittest.TestCase):
         print('teardown')
 
     def test_register_email_error(self):
-        email_error = self.test_register.register_email_error("11111111@160", "11111111", "123456", "d8gfd")
+        email_error = self.test_register.register_email_error("11111111@160", "11111111", "123456", self.image_path)
         self.assertFalse(email_error, 'case ran')
         # if email_error == True:
         #     print('如注册成功，此case执行失败')
 
     def test_register_username_error(self):
-        username_error = self.test_register.register_username_error("2222222@163.com", "222222222", "123456", "d8gfd")
+        username_error = self.test_register.register_username_error("2222222@163.com", "222222222", "123456",
+                                                                    self.image_path)
         self.assertFalse(username_error)
 
     def test_register_password_error(self):
-        password_error = self.test_register.register_password_error("333333333@160.com", "33333333", "123456", "d8gfd")
+        password_error = self.test_register.register_password_error("333333333@160.com", "33333333", "123456",
+                                                                    self.image_path)
         self.assertFalse(password_error)
 
     def test_register_code_error(self):
-        code_error = self.test_register.register_code_error("44444444@160.com", "4444444444", "123456", "d8gfd")
+        code_error = self.test_register.register_code_error("44444444@160.com", "4444444444", "123456", self.image_path)
         self.assertFalse(code_error)
 
     def test_register_pass(self):
-        result = self.test_register.register_success("55555555555@160.com", "55555555", "123456", "d8gfd")
-        self.assertFalse(result)
+        result = self.test_register.register_success("55555555555@160.com", "55555555", "123456", self.image_path)
+        self.assertTrue(result)
 
 
 if __name__ == '__main__':
