@@ -21,6 +21,15 @@ class RegisterBusiness(object):
         else:
             return False
 
+    def register_function(self, email, username, password, code, assertCode, assertText):
+        self.register_base(email, username, password, code)
+        if self.register_handle.get_register_error_msg(assertCode, assertText) == None:
+            return True
+        else:
+            return False
+
+
+
     # 输入邮箱错误
     def register_email_error(self, email, name, password, image_path):
         self.register_base(email, name, password, image_path)
