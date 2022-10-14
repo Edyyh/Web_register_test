@@ -3,7 +3,7 @@ import xlrd
 from xlutils.copy import copy
 
 
-class ExcelUtil():
+class ExcelUtil:
     def __init__(self, excel_path=None, index=None):
         if excel_path == None:
             excel_path = '/Users/air/PycharmProjects/Web_register_test/config/register_data.xls'
