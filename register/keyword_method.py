@@ -20,15 +20,18 @@ class ActionMethod:
         element = fd.get_element(key)
         return element
 
-    def element_input_value(self, key, value):
+    def element_input_value(self, value, key):
         element = self.get_element(key)
         element.send_keys(value)
 
     def click_element(self, key):
-        self.get_element(key)
+        self.get_element(key).click()
 
     def sleep_time(self):
         time.sleep(3)
 
     def close_browser(self):
         self.driver.close()
+
+    def get_title(self):
+        return self.driver.title
