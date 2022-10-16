@@ -7,22 +7,22 @@ import os
 import time
 import HTMLTestRunner
 
-log = UserLog()
-logger = log.get_log()
 
 
 
 class Case1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.log = UserLog()
+        cls.logger = cls.log.get_log()
         cls.image_path = '/Users/air/PycharmProjects/Web_register_test/Image/test_pic.png'
 
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get('http://www.5itest.cn/register')
-        logger.info('This is Chrome')
-        log.close_handle()
+        self.logger.info('This is Chrome')
+
         self.test_register = RegisterBusiness(self.driver)
 
     def tearDown(self):
@@ -36,7 +36,10 @@ class Case1(unittest.TestCase):
                 self.driver.save_screenshot(report_screenshot_path)
 
         self.driver.close()
-        print('teardown')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.log.close_handle()
 
     def test_register_email_error(self):
         email_error = self.test_register.register_email_error("11111111@160", "11111111", "123456", self.image_path)
