@@ -1,11 +1,15 @@
 # coding = utf-8
 from register.register_business import RegisterBusiness
 from selenium import webdriver
-# from log.user_log import UserLog
+from log.user_log import UserLog
 import unittest
 import os
 import time
 import HTMLTestRunner
+
+log = UserLog()
+logger = log.get_log()
+
 
 
 class Case1(unittest.TestCase):
@@ -17,16 +21,19 @@ class Case1(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get('http://www.5itest.cn/register')
+        logger.info('This is Chrome')
+        log.close_handle()
         self.test_register = RegisterBusiness(self.driver)
 
     def tearDown(self):
         time.sleep(2)
         errors = self._outcome.errors
         for method_name, error in errors:
-            case_name = self._testMethodName
-            report_screenshot_path = os.path.join(
-                os.path.abspath(os.path.join(os.getcwd(), "..")) + '/report/' + case_name + '.png')
-            self.driver.save_screenshot(report_screenshot_path)
+            if error:
+                case_name = self._testMethodName
+                report_screenshot_path = os.path.join(
+                    os.path.abspath(os.path.join(os.getcwd(), "..")) + '/report/' + case_name + '.png')
+                self.driver.save_screenshot(report_screenshot_path)
 
         self.driver.close()
         print('teardown')

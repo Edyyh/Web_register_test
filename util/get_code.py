@@ -1,7 +1,6 @@
 # coding = utf-8
 import ddddocr
 from PIL import Image
-from selenium.webdriver.common.by import By
 from register.register_page import RegisterPage
 
 

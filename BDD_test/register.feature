@@ -3,7 +3,7 @@ Feature: Register User
   A Behavior Driven Development test
 
   Scenario: open register website
-    When I open the register website
+    When I open the register website 'http://www.5itest.cn/register'
     Then I expect that the title is '注册'
 
   Scenario: input username
