@@ -3,9 +3,15 @@ from util.excel_util import ExcelUtil
 from register.keyword_method import ActionMethod
 
 
+def get_expect_result_value(data):
+    return data.split('=')
+
+
 class KeywordCase:
-    def run_main(self):
+    def __init__(self):
         self.action_method = ActionMethod()
+
+    def run_main(self):
         excel_path = ExcelUtil('/Users/air/PycharmProjects/Web_register_test/config/keyword.xls')
         case_lines = excel_path.get_lines()
         if case_lines:
@@ -20,7 +26,7 @@ class KeywordCase:
                     # if input_value:
                     self.run_method(method, input_value, element)
                     if actual_result != '':
-                        expect_value = self.get_expect_result_value(actual_result)
+                        expect_value = get_expect_result_value(actual_result)
                         if expect_value[0] == 'text':
                             result = self.run_method(expect_result)
                             if expect_value[1] in result:
@@ -37,9 +43,6 @@ class KeywordCase:
                             print('没有else')
                     else:
                         print('预期结果为空')
-
-    def get_expect_result_value(self, data):
-        return data.split('=')
 
     def run_method(self, method, input_value='', element=''):
         method_value = getattr(self.action_method, method)
